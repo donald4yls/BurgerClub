@@ -1,5 +1,30 @@
 import request from '@/utils/request'
 
+export function fetchAllBurgerStores(){
+    return request({
+        url:'api/app/burger-store',
+        method: 'get',
+        params: {}
+    })
+}
+
+export function fetchAllBurgerStoresWithSort(params){
+    return request({
+        url:'api/app/burger-store',
+        method: 'get',
+        params: params
+    })
+}
+
+export function fetchNearByBurgerStores(params){
+    return request({
+        url:'api/app/burger-store/near-by-burger-stores',
+        method: 'get',
+        params: params
+    })
+}
+
+
 export function fetchList(params) {
     return request({
         url: '/post/list',

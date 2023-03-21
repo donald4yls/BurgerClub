@@ -7,7 +7,7 @@
                     <div class="info-card">
                         <p>偶然之间看见了<a target="_blank" class="out-link" href="https://zhebk.cn/Web/Akina.html">Akina For Typecho</a>博客的主题，风格很是喜欢。</p>
                         <p>然后就开始用Vue搭建这种风格的博客，在此呢也将这套模板开放给大家。</p>
-                        <p><a target="_blank" href="https://gitee.com/fengziy/Gblog" style="color: #ff6d6d;">Gitee仓库</a> | <a target="_blank" href="https://github.com/fengziye/Gblog" style="color: #ff6d6d;">Github仓库</a>记得star★哟</p>
+                        <p><a target="_blank" href="https://gitee.com/fengziy/burgerClub" style="color: #ff6d6d;">Gitee仓库</a> | <a target="_blank" href="https://github.com/fengziye/burgerClub" style="color: #ff6d6d;">Github仓库</a>记得star★哟</p>
                     </div>
                 </div>
                 <div class="about-me about-info">

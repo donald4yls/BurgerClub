@@ -6,7 +6,7 @@ export default [
         type: 'get',
         response: () => {
             return {
-                code: 20000,
+                statusCode: 200,
                 data: {
                     avatar: 'https://s2.ax1x.com/2020/01/17/1SCadg.png',
                     slogan: 'Enjoy your burgers.',
@@ -24,7 +24,7 @@ export default [
         type: 'get',
         response: () => {
             return {
-                code: 20000,
+                statusCode: 200,
                 data: [
                     {
                         id: 1,

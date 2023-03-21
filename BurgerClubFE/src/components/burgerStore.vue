@@ -2,36 +2,24 @@
     <article class="post post-list">
         <div class="post-entry">
             <div class="feature">
-                <router-link :to="`/article/${post.id}`">
-                    <img :src="post.banner"/>
+                <router-link :to="`/article/${burgerStore.id}`">
+                    <img :src="burgerStore.mainPhoto"/>
                 </router-link>
             </div>
             <h1 class="entry-title">
-                <router-link :to="`/article/${post.id}`">
-                    <span v-if="post.isTop" style="color:#ff6d6d;font-weight:600">[置顶] </span>
-                    {{post.title}}
+                <router-link :to="`/article/${burgerStore.id}`">
+                    {{burgerStore.name}}
                 </router-link>
             </h1>
-            <div class="p-time">
-                <i class="iconfont iconmeditor-time"></i> {{post.pubTime | parseTime}}<i v-if="post.isHot" class="iconfont iconfire" style="margin-left: 5px;color: #ff6d6d;"></i>
-            </div>
-            <p class="summary">{{post.summary}}</p>
-            <footer class="entry-footer">
-                <div class="post-more">
-                    <router-link :to="`/article/${post.id}`"><i class="iconfont iconfish-li" style="font-size: 25px;"></i></router-link>
-                </div>
-                <div class="info-meta">
-                    <div class="comnum">
-                        <span>
-                            <i class="iconfont iconcomment"></i>
-                            <a href="https://zhebk.cn/Web/Akina.html">{{post.commentsCount}} 条评论</a>
-                        </span>
-                    </div>
-                    <div class="views">
-                        <span><i class="iconfont iconeyes"></i>{{post.viewsCount}} 热度</span>
-                    </div>
-                </div>
-            </footer>
+            <div>
+                <p class="summary">{{burgerStore.description}}</p>
+                <p class="review">[Location Lat]: {{burgerStore.positionLat}}</p>
+                <p class="review">[Location Lon]: {{burgerStore.positionLon}}</p>
+                <br>
+                <p class="review">[Taste]: {{burgerStore.averageTasteScore}}</p>
+                <p class="review">[Texture]: {{burgerStore.averageTextureScore}}</p>
+                <p class="review">[VisualPresentation]: {{burgerStore.averageVisualPresentationScore}}</p>
+            </div>            
         </div>
         <hr/>
     </article>
@@ -40,9 +28,9 @@
 <script>
 
     export default {
-        name: "post",
+        name: "burgerStore",
         props: {
-            post: {
+            burgerStore: {
                 type: Object
             }
         }
@@ -114,6 +102,15 @@
             color: #6f6f6f;
             letter-spacing: 1px;
             line-height: 30px;
+        }
+
+        p.review {
+            min-height: 20px;
+            margin: 0 0 0 17%;
+            font-size: 12px;
+            color: #0000FF;
+            letter-spacing: 1px;
+            line-height: 20px;
         }
 
         footer.entry-footer {

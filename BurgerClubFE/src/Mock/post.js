@@ -48,7 +48,7 @@ export default [
             size = size instanceof Number ? size : parseInt(size)
             const pageList = List.filter((item, index) => index < size * page && index >= size * (page - 1));
             return {
-                code: 20000,
+                statusCode: 200,
                 data: {
                     total:List.length,
                     items:pageList.sort((a,b)=>a.isTop===b.isTop?0:a.isTop?-1:1),

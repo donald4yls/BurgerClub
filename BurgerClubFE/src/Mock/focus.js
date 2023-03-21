@@ -5,7 +5,7 @@ export default [
         type: 'get',
         response: () => {
             return {
-                code: 20000,
+                statusCode: 200,
                 data: [
                     {
                         id: 1,

@@ -27,7 +27,7 @@
         props:{
             src:{
                 type: String,
-                default: 'https://images.squarespace-cdn.com/content/v1/5ddafa6df6e761177a52ce5d/1604368027685-BPQGEO7I5H54F3LRBGXU/untitled-275-2.jpg'
+                default: 'http://localhost/img/banner.jpg'
             },
             isHome:{
                 type: [Boolean,String],

@@ -42,7 +42,7 @@ export default [
         response: () => {
             let count = 1 + ~~(Math.random() * 5)
             return {
-                code: 20000,
+                statusCode: 200,
                 data: getComment(count)
             }
         }

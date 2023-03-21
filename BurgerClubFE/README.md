@@ -1,4 +1,4 @@
-Clone from [Gitee] https://gitee.com/fengziy/Gblog | [github](https://github.com/fengziye/Gblog)  
+Clone from [Gitee] https://gitee.com/fengziy/burgerClub | [github](https://github.com/fengziye/burgerClub)  
 ### Introduce
 >
 > This a Burger Club Demo

@@ -22,7 +22,7 @@ export default [
         type: 'get',
         response: config => {
             return {
-                code: 20000,
+                statusCode: 200,
                 data: List
             }
         }

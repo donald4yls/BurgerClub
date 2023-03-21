@@ -1,16 +1,26 @@
 <template>
     <div class="home">
         <banner isHome="true"></banner>
-        <div class="site-content animate">            
-            <!--文章列表-->
+        <div class="site-content animate"> 
             <main class="site-main" :class="{'search':hideSlogan}">
-                <section-title v-if="!hideSlogan">推荐</section-title>
-                <template v-for="item in postList">
-                    <post :post="item" :key="item.id"></post>
+                <section-title v-if="!hideSlogan">Hot Burger Stores</section-title>
+                <div style="margin: 30px;">
+                    <span>Sort by </span>
+                    <button style="margin: 30px;" @click="sortByTaste">Taste</button>
+                    <button style="margin: 30px;" @click="sortByTexture">Texture</button>
+                    <button style="margin: 30px;" @click="sortByVisualPresentation">VisualPresentation</button>
+                </div>                
+                <div style="margin: 30px;">
+                    <label>Your Postiton:</label>
+                    <input class="v" type="text" v-model="postionLat" placeholder="postionLat" id="postionLat">
+                    <input class="v" type="text" v-model="postionLon" placeholder="postionLon" id="postionLon">
+                    <button style="margin: 30px;" @click="searchNearBy">Find NearBy</button>
+                </div>
+                <template v-for="item in burgerStoreList">
+                    <burgerStore :burgerStore="item" :key="item.id"></burgerStore>
                 </template>
             </main>
 
-            <!--加载更多-->
             <div class="more" v-show="hasNextPage">
                 <div class="more-btn" @click="loadMore">More</div>
             </div>
@@ -23,9 +33,11 @@
     import Feature from '@/components/feature'
     import sectionTitle from '@/components/section-title'
     import Post from '@/components/post'
+    import BurgerStore from '@/components/burgerStore'
     import SmallIco from '@/components/small-ico'
     import Quote from '@/components/quote'
-    import {fetchFocus, fetchList} from '../api'
+    import {fetchFocus, fetchList, fetchAllBurgerStores, fetchAllBurgerStoresWithSort,
+            fetchNearByBurgerStores} from '../api'
 
     export default {
         name: 'Home',
@@ -34,8 +46,12 @@
             return {
                 features: [],
                 postList: [],
+                burgerStoreList:[],
                 currPage: 1,
-                hasNextPage: false
+                hasNextPage: false,
+                isDesc: false,
+                postionLat: '',
+                postionLon: ''
             }
         },
         components: {
@@ -44,7 +60,8 @@
             sectionTitle,
             Post,
             SmallIco,
-            Quote
+            Quote,
+            BurgerStore
         },
         computed: {
             searchWords() {
@@ -61,6 +78,15 @@
             }
         },
         methods: {
+            fetchBurgerStores(){
+                fetchAllBurgerStores().then(res =>{
+                    this.burgerStoreList = res.data.items || []
+                    this.currPage = 1
+                    this.hasNextPage = true                    
+                }).catch(err=>{
+                    console.log(err);
+                })
+            },
             fetchFocus() {
                 fetchFocus().then(res => {
                     this.features = res.data || []
@@ -83,9 +109,61 @@
                     this.currPage = res.data.page
                     this.hasNextPage = res.data.hasNextPage
                 })
+            },
+            sortByTaste(){
+                let order = this.isDesc? 'desc': ''
+                let params = {Sorting:'averageTasteScore '+order}
+                fetchAllBurgerStoresWithSort(params).then(res =>{
+                    this.burgerStoreList = res.data.items || []
+                    console.log("averageTasteScore"+this.burgerStoreList);
+                    this.currPage = 1
+                    this.hasNextPage = true
+                }).catch(err=>{
+                    console.log(err);
+                })
+
+                this.isDesc = !this.isDesc;
+            },
+            sortByTexture(){
+                let order = this.isDesc? 'desc': ''
+                let params = {Sorting:'averageTextureScore '+order}
+                fetchAllBurgerStoresWithSort(params).then(res =>{
+                    this.burgerStoreList = res.data.items || []
+                    console.log("averageTasteScore"+this.burgerStoreList);
+                    this.currPage = 1
+                    this.hasNextPage = true
+                }).catch(err=>{
+                    console.log(err);
+                })
+                this.isDesc = !this.isDesc;
+            },
+            sortByVisualPresentation(){
+                let order = this.isDesc? 'desc': ''
+                let params = {Sorting:'averageVisualPresentationScore '+order}
+                fetchAllBurgerStoresWithSort(params).then(res =>{
+                    this.burgerStoreList = res.data.items || []
+                    console.log("averageTasteScore"+this.burgerStoreList);
+                    this.currPage = 1
+                    this.hasNextPage = true
+                }).catch(err=>{
+                    console.log(err);
+                })
+                this.isDesc = !this.isDesc;
+            },
+            searchNearBy(){
+                let params = {positionLat:this.postionLat,
+                               postitionLon: this.postionLon};
+                fetchNearByBurgerStores(params).then(res =>{
+                    this.burgerStoreList = res.data || []
+                    this.currPage = 1
+                    this.hasNextPage = true
+                }).catch(err=>{
+                    console.log(err);
+                })
             }
         },
         mounted() {
+            this.fetchBurgerStores();
             this.fetchFocus();
             this.fetchList();
         }

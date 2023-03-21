@@ -76,8 +76,8 @@ yum -y install gcc-c++</code></pre>
                             <div class="donate" @click="showDonate=!showDonate">
                                 <span>赏</span>
                                 <ul class="donate_inner" :class="{'show':showDonate}">
-                                    <li class="wedonate"><img src="http://cdn.fengziy.cn/gblog/wexin_pay.png"><p>微信</p></li>
-                                    <li class="alidonate"><img src="http://cdn.fengziy.cn/gblog/ali_pay.jpg"><p>支付宝</p></li>
+                                    <li class="wedonate"><img src="http://cdn.fengziy.cn/burgerClub/wexin_pay.png"><p>微信</p></li>
+                                    <li class="alidonate"><img src="http://cdn.fengziy.cn/burgerClub/ali_pay.jpg"><p>支付宝</p></li>
                                 </ul>
                             </div>
                             <!-- 文章标签 -->
@@ -90,7 +90,7 @@ yum -y install gcc-c++</code></pre>
 
                     <!--声明-->
                     <div class="open-message">
-                        <p>声明：Gblog博客|版权所有，违者必究|如未注明，均为原创|本网站采用<a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" target="_blank">BY-NC-SA</a>协议进行授权</p>
+                        <p>声明：burgerClub博客|版权所有，违者必究|如未注明，均为原创|本网站采用<a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" target="_blank">BY-NC-SA</a>协议进行授权</p>
                         <p>转载：转载请注明原文链接 - <a href="/">看一遍闭着眼都会安装Lua了</a></p>
                     </div>
                     <!--评论-->

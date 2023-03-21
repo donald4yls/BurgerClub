@@ -41,7 +41,7 @@ service.interceptors.response.use(
         // store.commit('SET_LOADING',false);
 
         // if the custom code is not 20000, it is judged as an error.
-        if (res.code !== 20000) {
+        if (res.statusCode !== 200) {
             return Promise.reject(new Error(res.message || 'Error'))
         } else {
             return res
